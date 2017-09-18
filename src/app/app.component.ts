@@ -72,6 +72,12 @@ export class AppComponent implements AfterViewInit {
   }
 
   connect() {
+    // Build the URL to gamebus off of the location string, assumes
+    // app is deployed in same Openshift project
+    if (environment.production) {
+      let hostname = location.hostname;
+      this.socketUrl = "ws://" + hostname.replace("mobile-app-admin-","gamebus-") + "/game/admin"
+    }
     this.ws = new WebSocket(this.socketUrl);
     this.ws.onopen = this.onOpen.bind(this);
     this.ws.onmessage = this.onMessage.bind(this);
