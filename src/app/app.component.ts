@@ -23,6 +23,7 @@ export class AppComponent implements AfterViewInit {
   authenticated: boolean = false;
   token: string = '';
   socketUrl: string = (environment.production) ? 'ws://gamebus-production.apps-test.redhatkeynote.com/game/admin' : 'ws://localhost:9001/game/admin';
+  //socketUrl: string = (environment.production) ? 'ws://gamebus-production.apps-test.redhatkeynote.com/game/admin' : 'ws://gamebus-summit-game.192.168.42.62.nip.io/game/admin';
   selfieStates = [
     {
       name: 'open',
@@ -162,6 +163,11 @@ export class AppComponent implements AfterViewInit {
 
       this.elementRef.nativeElement.querySelector('#toast')
         .MaterialSnackbar.showSnackbar(data);
+    }
+
+    if (message.type === 'reconnect') {
+      console.log("Reconnect received");
+      this.ws.close();
     }
   }
 
