@@ -9,7 +9,7 @@
   "angular-cli": {},
   "scripts": {
     "clean": "rm -rf node_modules && rm -rf typings && rm -rf tmp && rm -rf dist",
-    "start": "ng serve --port 8080",
+    "start": "ng serve -prod --port 8080",
     "postinstall": "typings install",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
