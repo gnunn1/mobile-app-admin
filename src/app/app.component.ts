@@ -77,7 +77,8 @@ export class AppComponent implements AfterViewInit {
     // app is deployed in same Openshift project
     if (environment.production) {
       let hostname = location.hostname;
-      this.socketUrl = "ws://" + hostname.replace("mobile-app-admin-","gamebus-") + "/game/admin"
+      this.socketUrl = "ws://" + hostname.replace("mobile-app-admin-","gamebus-") + "/game/admin";
+      console.log("Connecting to " + this.socketUrl);
     }
     this.ws = new WebSocket(this.socketUrl);
     this.ws.onopen = this.onOpen.bind(this);
