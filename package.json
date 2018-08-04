@@ -4,7 +4,8 @@
   "license": "MIT",
   "angular-cli": {},
   "scripts": {
-    "start": "ng serve --port 8080 -prod",
+    "clean": "rm -rf node_modules && rm -rf typings && rm -rf tmp",
+    "start": "ng serve --port 8080",
     "postinstall": "typings install",
     "lint": "tslint \"src/**/*.ts\"",
     "test": "ng test",
